@@ -1,0 +1,23 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": [
+    "react",
+    "typescript",
+    "oxc"
+  ],
+  "rules": {
+    "react/rules-of-hooks": "error",
+    "oxlint-plugin-query/exhaustive-deps": "error",
+    "oxlint-plugin-query/stable-query-client": "error",
+    "oxlint-plugin-query/no-unstable-deps": "error",
+    "react/only-export-components": [
+      "warn",
+      {
+        "allowConstantExport": true
+      }
+    ]
+  },
+  "jsPlugins": [
+    "./node_modules/oxlint-plugin-query/dist/index.js"
+  ]
+}

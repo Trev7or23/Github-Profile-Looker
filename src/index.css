@@ -1,0 +1,26 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-surface-container: #182028;
+  --color-on-surface: #dae3ee;
+  --color-background: #0b141c;
+  --color-container: rgb(20, 28, 36);
+  --color-surface-bright: rgb(49, 58, 67);
+  --color-element: rgb(172, 199, 255);
+  --color-content: rgb(24, 32, 40);
+  --color-midudev: #09f;
+}
+
+@layer base {
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-blue-500;
+  }
+}
+
+/* En tu CSS global */
+@layer utilities {
+  .input-autofill-fix {
+    /* Usamos @apply para que Tailwind genere el box-shadow con los colores de tu tema */
+    @apply autofill:shadow-[inset_0_0_0_1000px_theme(colors.surface-container)] autofill:[-webkit-text-fill-color:theme(colors.on-surface)];
+  }
+}
