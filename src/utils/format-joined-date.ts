@@ -1,9 +1,15 @@
-export function formatJoinedDate(date: Date) {
-  const formatted = new Intl.DateTimeFormat('en-GB', {
+function formatDate(date: string | Date) {
+  return new Intl.DateTimeFormat('en-GB', {
     day: 'numeric',
     month: 'short',
     year: 'numeric',
-  }).format(date)
+  }).format(new Date(date))
+}
 
-  return `Joined ${formatted}`
+export function formatJoinedDate(date: string | Date) {
+  return `Joined ${formatDate(date)}`
+}
+
+export function formatUpdatedDate(date: string | Date) {
+  return `Updated ${formatDate(date)}`
 }

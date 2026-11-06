@@ -3,8 +3,8 @@ export interface GithubResponse {
   id: number
   node_id: string
   avatar_url: string
-  gravatar_id: string
-  name?: string
+  gravatar_id: string | null
+  name?: string | null
   url: string
   html_url: string
   followers_url: string
@@ -17,20 +17,19 @@ export interface GithubResponse {
   events_url: string
   received_events_url: string
   type: string
-  user_view_type: string
+  user_view_type?: string
   site_admin: boolean
-  name: null
-  company: null
-  blog: string
-  location: null
-  email: null
-  hireable: null
-  bio: null
-  twitter_username: null
+  company?: string | null
+  blog?: string | null
+  location?: string | null
+  email?: string | null
+  hireable?: boolean | null
+  bio?: string | null
+  twitter_username?: string | null
   public_repos: number
   public_gists: number
   followers: number
   following: number
-  created_at: Date
-  updated_at: Date
+  created_at: string
+  updated_at: string
 }

@@ -2,8 +2,16 @@
 
 @theme {
   --color-surface-container: #182028;
+  --color-surface-container-low: #141c24;
+  --color-surface-container-high: #222b33;
   --color-on-surface: #dae3ee;
+  --color-on-surface-variant: #c1c6d6;
   --color-background: #0b141c;
+  --color-outline: #8b909f;
+  --color-outline-variant: #414754;
+  --color-primary: #acc7ff;
+  --color-secondary: #7bdb80;
+  --color-tertiary: #d5bbff;
   --color-container: rgb(20, 28, 36);
   --color-surface-bright: rgb(49, 58, 67);
   --color-element: rgb(172, 199, 255);
@@ -17,10 +25,45 @@
   }
 }
 
-/* En tu CSS global */
+@keyframes skeleton-shimmer {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
 @layer utilities {
-  .input-autofill-fix {
-    /* Usamos @apply para que Tailwind genere el box-shadow con los colores de tu tema */
-    @apply autofill:shadow-[inset_0_0_0_1000px_theme(colors.surface-container)] autofill:[-webkit-text-fill-color:theme(colors.on-surface)];
+  .input-autofill-fix:-webkit-autofill,
+  .input-autofill-fix:autofill {
+    box-shadow: inset 0 0 0 1000px var(--color-surface-container);
+    -webkit-text-fill-color: var(--color-on-surface);
+  }
+
+  .skeleton {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-surface-container-high);
+  }
+
+  .skeleton::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgb(65 71 84 / 0.4) 50%,
+      transparent 100%
+    );
+    animation: skeleton-shimmer 1.4s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton::after {
+    animation: none;
   }
 }

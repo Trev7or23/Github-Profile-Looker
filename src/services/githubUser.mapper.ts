@@ -1,28 +1,50 @@
-import type { GithubResponse } from '../types/github-response'
-import type { GithubUser } from '../types/github-user'
+import type { GithubResponse } from '@/types/github-response'
+import type { GithubUser } from '@/types/github-user'
 
 export function mapGithubUser({
   avatar_url: avatarUrl,
+  bio,
+  blog,
+  company,
   created_at: createdAt,
+  email,
   followers,
   followers_url: followersUrl,
   following,
   following_url: followingUrl,
+  hireable,
   html_url: htmlUrl,
+  location,
   login,
-  url,
+  name,
+  public_gists: publicGists,
+  public_repos: publicRepos,
+  twitter_username: twitterUsername,
   type,
+  updated_at: updatedAt,
+  url,
 }: GithubResponse): GithubUser {
   return {
     type,
     avatarUrl,
+    bio: bio ?? undefined,
+    blog: blog ?? undefined,
+    company: company ?? undefined,
     createdAt,
+    email: email ?? undefined,
     followers,
     followersUrl,
     following,
     followingUrl,
+    hireable: hireable ?? undefined,
     htmlUrl,
+    location: location ?? undefined,
     login,
+    name: name ?? undefined,
+    publicGists,
+    publicRepos,
+    twitterUsername: twitterUsername ?? undefined,
+    updatedAt,
     url,
   }
 }
