@@ -2,9 +2,10 @@ import { queryOptions } from '@tanstack/react-query'
 import type { GithubResponse } from '@/types/github-response'
 import type { GithubUserSearchResponse } from '@/types/github-user-search-response'
 import { isEmail } from '@/utils/is-email'
+import { env } from '@/config/env'
 
 const fetchGithubUser = async (username: string): Promise<GithubResponse> => {
-  const url = `${import.meta.env.VITE_GITHUB_API}/users/${username}`
+  const url = `${env.GITHUB_API}/users/${username}`
   const response = await fetch(url)
 
   if (!response.ok) {
