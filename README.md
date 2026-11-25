@@ -1,35 +1,50 @@
-# React + TypeScript + Vite
+# GitHub Profile Looker
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A small web app that looks up GitHub profiles by username or by email.
 
-Currently, two official plugins are available:
+## What you can do
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Search by username** — type any GitHub username and you get the profile page: login, name, avatar, bio, public repos and gists counts, and a "View on Github" link.
+- **Search by email** — when the email is public in someone's profile, GitHub returns their login and you get the full profile page.
+- **Recent searches** — the last five searches are kept in your browser, so you can find them again quickly when you reopen the app.
 
-## React Compiler
+## How to run it locally
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+Install the dependencies:
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+bun install   # or npm install
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Start the dev server:
+
+```bash
+bun run dev
+```
+
+Open the app at `http://localhost:5173`.
+
+Other useful scripts:
+
+```bash
+bun run build
+bun run preview
+bun run lint
+bun run test
+```
+
+The app reads `VITE_GITHUB_API` as the GitHub API base URL. To use a custom one locally, copy `.env.example` to `.env` and set the variable there. By default it points to the public GitHub API: `https://api.github.com`. Expect the usual anonymous rate limits (a 403 on the email search means you hit the limit — wait a bit and try again).
+
+## Requirements
+
+- Node.js 18+ or a recent Bun. `bun install` and `npm install` both work with this repo.
+- No extra accounts or setup needed to browse the app.
+
+## For developers who want to contribute
+
+1. Fork the repo and clone it locally.
+2. `bun install` (or `npm install`).
+3. `bun run dev` to start developing.
+4. `bun run lint` and `bun run test` to check your changes.
+
+PRs and issue reports are welcome.
