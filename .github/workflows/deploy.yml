@@ -24,9 +24,10 @@ jobs:
         run: bun run build
 
       - name: Deploy to Surge
-        uses: mahmoudgalalz/surge-action@v0.1.5
-        with:
-          domain: "github-profile-looker-trev7or23.surge.sh"
-          path: "./dist"
+        # uses: mahmoudgalalz/surge-action@v0.1.5
+        # with:
+        #   domain: "github-profile-looker-trev7or23.surge.sh"
+        #   path: "./dist"
+        run: bunx surge ./dist github-profile-looker-trev7or23.surge.sh
         env:
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
